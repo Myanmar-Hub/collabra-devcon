@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>HibernateTest</servlet-name>
-        <servlet-class>net.myanmarhub.packntrade.backend.TestServlet</servlet-class>
+        <servlet-class>net.myanmarhub.collabra.backend.TestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HibernateTest</servlet-name>

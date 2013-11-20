@@ -6,9 +6,9 @@ import com.google.api.server.spi.config.ApiMethod;
 
 import net.myanmarhub.collabra.backend.api.Config;
 import net.myanmarhub.collabra.backend.dao.impl.UserDAOImpl;
-import net.myanmarhub.collabra.backend.domain.GCMConstant;
 import net.myanmarhub.collabra.backend.domain.MessageData;
 import net.myanmarhub.collabra.backend.domain.User;
+import net.myanmarhub.collabra.backend.util.GCMConstant;
 import net.myanmarhub.collabra.backend.util.HibernateUtil;
 import net.myanmarhub.collabra.backend.util.Utils;
 
@@ -73,8 +73,8 @@ public class UserResource {
             new UserDAOImpl(session).insert(user);
             HashMap<String, Long> result = new HashMap<String, Long>();
             result.put("id", user.getId());
-            Utils.GCMNotify(new MessageData(String.valueOf(user.getId()),
-                    GCMConstant.KIND_USER, GCMConstant.TYPE_INSERT));
+//            Utils.GCMNotify(new MessageData(String.valueOf(user.getId()),
+//                    GCMConstant.KIND_USER, GCMConstant.TYPE_INSERT));
             return result;
         } finally {
             session.close();

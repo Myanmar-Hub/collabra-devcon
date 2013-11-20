@@ -7,8 +7,8 @@ import com.google.api.server.spi.config.ApiMethod;
 import net.myanmarhub.collabra.backend.api.Config;
 import net.myanmarhub.collabra.backend.dao.impl.BaseDAOImpl;
 import net.myanmarhub.collabra.backend.domain.Conversation;
-import net.myanmarhub.collabra.backend.domain.GCMConstant;
 import net.myanmarhub.collabra.backend.domain.MessageData;
+import net.myanmarhub.collabra.backend.util.GCMConstant;
 import net.myanmarhub.collabra.backend.util.HibernateUtil;
 import net.myanmarhub.collabra.backend.util.Utils;
 

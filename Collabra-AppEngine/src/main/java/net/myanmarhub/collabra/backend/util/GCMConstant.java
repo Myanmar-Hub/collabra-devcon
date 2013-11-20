@@ -1,4 +1,4 @@
-package net.myanmarhub.collabra.backend.domain;
+package net.myanmarhub.collabra.backend.util;
 
 /**
  * Tin Htoo Aung (Myanmar Hub) on 31/10/13.

@@ -17,6 +17,8 @@
 
         <mapping class="net.myanmarhub.collabra.backend.domain.Conversation"/>
         <mapping class="net.myanmarhub.collabra.backend.domain.User"/>
+        <mapping class="net.myanmarhub.collabra.backend.domain.GCMDevice"/>
+        <mapping class="net.myanmarhub.collabra.backend.domain.MessageData"/>
 
     </session-factory>
 
