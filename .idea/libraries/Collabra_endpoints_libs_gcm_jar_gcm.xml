@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Collabra-endpoints-libs-gcm.jar-gcm">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Collabra-endpoints/libs/gcm.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
