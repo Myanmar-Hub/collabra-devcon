@@ -31,7 +31,7 @@ import javax.inject.Named;
         clientIds = {Config.CLIENT_WEB, Config.CLIENT_ANDROID_DEBUG, Config.CLIENT_API_EXPLORER},
         defaultVersion = AnnotationBoolean.TRUE
 )
-public class UserDAO {
+public class UserResource {
 
 
     @ApiMethod(
