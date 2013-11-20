@@ -1,4 +1,4 @@
-package net.myanmarhub.collabra;
+package net.myanmarhub.collabra.backend;
 
 import java.io.IOException;
 

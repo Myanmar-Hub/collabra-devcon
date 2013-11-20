@@ -1,4 +1,4 @@
-package net.myanmarhub.collabra.domain;
+package net.myanmarhub.collabra.backend.domain;
 
 import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
 

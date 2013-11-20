@@ -1,4 +1,4 @@
-package net.myanmarhub.collabra.domain;
+package net.myanmarhub.collabra.backend.domain;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

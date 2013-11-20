@@ -5,15 +5,18 @@
 <hibernate-configuration>
 
     <session-factory>
-        <property name="connection.url">jdbc:google:rdbms://myanhub-collabra:sql/myanhub_collabra</property>
-        <property name="connection.driver_class">com.google.appengine.api.rdbms.AppEngineDriver</property>
+        <property name="connection.url">jdbc:google:rdbms://myanhub-collabra:sql/myanhub_collabra
+        </property>
+        <property name="connection.driver_class">com.google.appengine.api.rdbms.AppEngineDriver
+        </property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="connection.pool_size">0</property>
         <property name="show_sql">false</property>
 
-        <!--<mapping class="net.myanmarhub.eventicous.backend.domain.Transaction"/>-->
+        <mapping class="net.myanmarhub.collabra.backend.domain.Conversation"/>
+        <mapping class="net.myanmarhub.collabra.backend.domain.User"/>
 
     </session-factory>
 
