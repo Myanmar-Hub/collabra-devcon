@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Collabra-AppEngine/Collabra-AppEngine.iml" filepath="$PROJECT_DIR$/Collabra-AppEngine/Collabra-AppEngine.iml" />
       <module fileurl="file://$PROJECT_DIR$/Collabra-endpoints/Collabra-endpoints.iml" filepath="$PROJECT_DIR$/Collabra-endpoints/Collabra-endpoints.iml" />
       <module fileurl="file://$PROJECT_DIR$/CollabraProject.iml" filepath="$PROJECT_DIR$/CollabraProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sherlock/Sherlock.iml" filepath="$PROJECT_DIR$/Sherlock/Sherlock.iml" />
     </modules>
   </component>
 </project>

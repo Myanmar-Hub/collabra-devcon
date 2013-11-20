@@ -12,64 +12,53 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:id="@+id/imageView"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="90dp"
-            android:id="@+id/linearLayout">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:id="@+id/imageView"
-                android:layout_weight="1"
-                android:src="@drawable/ic_launcher"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView2"
-                android:layout_weight="5"
-                android:src="@drawable/ic_logo"/>
-        </LinearLayout>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="130dp"/>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/shape_bg_white"
-            android:layout_below="@+id/linearLayout"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="33dp"
             android:padding="8dp"
-            android:id="@+id/linearLayout2">
+            android:id="@+id/linearLayout2"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true">
 
-            <EditText
+            <net.myanmarhub.collabra.widget.EEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_txtName"
                 android:id="@+id/login_txtName"/>
 
-            <Button
+            <net.myanmarhub.collabra.widget.EButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/SignIn"
+                android:textColor="@android:color/black"
                 android:background="@drawable/btn_white"
                 android:id="@+id/login_btnSignIn"
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
 
-        <TextView
+        <net.myanmarhub.collabra.widget.ETextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MyanmarHub © 2013 Apache V2 license"
             android:id="@+id/textView"
-            android:layout_marginTop="19dp"
-            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:textColor="@android:color/white"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 </ScrollView>

@@ -1,1 +1,1 @@
-include ':Collabra', ':Collabra-endpoints'
+include ':Collabra', ':Collabra-endpoints', ':Sherlock'
