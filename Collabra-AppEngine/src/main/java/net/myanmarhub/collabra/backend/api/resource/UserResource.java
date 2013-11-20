@@ -50,7 +50,7 @@ public class UserResource {
 
     @ApiMethod(
             name = "user.getByUsername",
-            path = "user/{username}",
+            path = "user/with/{username}",
             httpMethod = ApiMethod.HttpMethod.GET
     )
     public User getByUserName(@Named("username") String userName) {

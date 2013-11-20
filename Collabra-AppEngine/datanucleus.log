@@ -8,3 +8,15 @@
 17:59:08,738 (main) INFO  [DataNucleus.Enhancer] - Class "net.myanmarhub.collabra.DeviceInfo" is already enhanced.
 17:59:08,740 (main) INFO  [DataNucleus.Enhancer] - Class "net.myanmarhub.collabra.MessageData" is already enhanced.
 17:59:08,740 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 2 classes. Timings : input=219 ms, enhance=26 ms, total=245 ms. Consult the log for full details
+21:34:38,317 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.7) for API "JDO" using JRE "1.7"
+21:34:38,449 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 0 classes. Timings : input=127 ms, enhance=0 ms, total=127 ms. Consult the log for full details
+21:34:38,450 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed and no classes were enhanced. Consult the log for full details
+21:36:05,500 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.7) for API "JDO" using JRE "1.7"
+21:36:05,621 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 0 classes. Timings : input=118 ms, enhance=0 ms, total=118 ms. Consult the log for full details
+21:36:05,621 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed and no classes were enhanced. Consult the log for full details
+21:39:06,531 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.7) for API "JDO" using JRE "1.7"
+21:39:06,653 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 0 classes. Timings : input=119 ms, enhance=0 ms, total=119 ms. Consult the log for full details
+21:39:06,653 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed and no classes were enhanced. Consult the log for full details
+21:41:03,259 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.7) for API "JDO" using JRE "1.7"
+21:41:03,397 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 0 classes. Timings : input=133 ms, enhance=0 ms, total=133 ms. Consult the log for full details
+21:41:03,398 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed and no classes were enhanced. Consult the log for full details
