@@ -1,0 +1,231 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/DtJUsAihnhZrUKBU6-SKkEjVUdk\"",
+ "discoveryVersion": "v1",
+ "id": "collabra:v1",
+ "name": "collabra",
+ "version": "v1",
+ "description": "API access for Collabra!",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myanhub-collabra.appspot.com/_ah/api/",
+ "rpcUrl": "https://myanhub-collabra.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Conversation": {
+   "id": "Conversation",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "message": {
+     "type": "string"
+    },
+    "recipients": {
+     "type": "array",
+     "items": {
+      "$ref": "User"
+     }
+    },
+    "sendAt": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "sender": {
+     "$ref": "User"
+    }
+   }
+  },
+  "JsonMap": {
+   "id": "JsonMap",
+   "type": "object"
+  },
+  "User": {
+   "id": "User",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "lastLoginTime": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "username": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "collabra.conversation.getById": {
+   "id": "collabra.conversation.getById",
+   "allowGet": true,
+   "parameters": {
+    "conversationId": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "conversationId"
+   ],
+   "returns": {
+    "$ref": "Conversation"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.conversation.insert": {
+   "id": "collabra.conversation.insert",
+   "parameters": {
+    "resource": {
+     "$ref": "Conversation"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "JsonMap"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.user.delete": {
+   "id": "collabra.user.delete",
+   "parameters": {
+    "userId": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "userId"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.user.getById": {
+   "id": "collabra.user.getById",
+   "allowGet": true,
+   "parameters": {
+    "userId": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "userId"
+   ],
+   "returns": {
+    "$ref": "User"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.user.getByUsername": {
+   "id": "collabra.user.getByUsername",
+   "allowGet": true,
+   "parameters": {
+    "username": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "username"
+   ],
+   "returns": {
+    "$ref": "User"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.user.insert": {
+   "id": "collabra.user.insert",
+   "parameters": {
+    "resource": {
+     "$ref": "User"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "JsonMap"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

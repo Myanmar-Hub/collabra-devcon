@@ -1,0 +1,246 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/DtJUsAihnhZrUKBU6-SKkEjVUdk\"",
+ "discoveryVersion": "v1",
+ "id": "collabra:v1",
+ "name": "collabra",
+ "version": "v1",
+ "description": "API access for Collabra!",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://myanhub-collabra.appspot.com/_ah/api/collabra/v1/",
+ "basePath": "/_ah/api/collabra/v1/",
+ "rootUrl": "https://myanhub-collabra.appspot.com/_ah/api/",
+ "servicePath": "collabra/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Conversation": {
+   "id": "Conversation",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "message": {
+     "type": "string"
+    },
+    "recipients": {
+     "type": "array",
+     "items": {
+      "$ref": "User"
+     }
+    },
+    "sendAt": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "sender": {
+     "$ref": "User"
+    }
+   }
+  },
+  "JsonMap": {
+   "id": "JsonMap",
+   "type": "object"
+  },
+  "User": {
+   "id": "User",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "lastLoginTime": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "username": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "resources": {
+  "conversation": {
+   "methods": {
+    "getById": {
+     "id": "collabra.conversation.getById",
+     "path": "conversation/{conversationId}",
+     "httpMethod": "GET",
+     "parameters": {
+      "conversationId": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "conversationId"
+     ],
+     "response": {
+      "$ref": "Conversation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insert": {
+     "id": "collabra.conversation.insert",
+     "path": "conversation",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "Conversation",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "JsonMap"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  },
+  "user": {
+   "methods": {
+    "delete": {
+     "id": "collabra.user.delete",
+     "path": "user/{userId}",
+     "httpMethod": "DELETE",
+     "parameters": {
+      "userId": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "userId"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "getById": {
+     "id": "collabra.user.getById",
+     "path": "user/{userId}",
+     "httpMethod": "GET",
+     "parameters": {
+      "userId": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "userId"
+     ],
+     "response": {
+      "$ref": "User"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "getByUsername": {
+     "id": "collabra.user.getByUsername",
+     "path": "user/with/{username}",
+     "httpMethod": "GET",
+     "parameters": {
+      "username": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "username"
+     ],
+     "response": {
+      "$ref": "User"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insert": {
+     "id": "collabra.user.insert",
+     "path": "user",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "User",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "JsonMap"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  }
+ }
+}
