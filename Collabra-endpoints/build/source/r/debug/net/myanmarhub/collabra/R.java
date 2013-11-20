@@ -10,13 +10,11 @@ package net.myanmarhub.collabra;
 public final class R {
     public static final class attr {
     }
-
     public static final class id {
-        public static int msgView = 0x7f030000;
-        public static int regButton = 0x7f030001;
+        public static int msgView=0x7f030000;
+        public static int regButton=0x7f030001;
     }
-
     public static final class layout {
-        public static int activity_register = 0x7f020000;
+        public static int activity_register=0x7f020000;
     }
 }
