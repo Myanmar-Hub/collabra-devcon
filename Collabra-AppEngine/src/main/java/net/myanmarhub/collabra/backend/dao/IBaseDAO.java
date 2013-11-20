@@ -34,6 +34,13 @@ public interface IBaseDAO<T> {
     public void delete(Long id);
 
     /**
+     * Delete object of type T by String ID
+     *
+     * @param id object with String ID to delete
+     */
+    public void delete(String id);
+
+    /**
      * Delete given object of type T
      *
      * @param object object to be deleted. Id field must be set

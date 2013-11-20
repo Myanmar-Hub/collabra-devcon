@@ -90,4 +90,11 @@ public class BaseDAOImpl<T> implements IBaseDAO<T> {
         mSession.update(object);
         mSession.getTransaction().commit();
     }
+
+    @Override
+    public void delete(String id) {
+        mSession.getTransaction().begin();
+        mSession.delete(mSession.get(mClazz, id));
+        mSession.getTransaction().commit();
+    }
 }

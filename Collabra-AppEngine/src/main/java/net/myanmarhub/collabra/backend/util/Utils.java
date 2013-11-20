@@ -4,14 +4,11 @@ import com.google.android.gcm.server.Constants;
 import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
-import com.google.api.server.spi.response.UnauthorizedException;
 
-import net.myanmarhub.packntrade.backend.dao.impl.AccountDAOImpl;
-import net.myanmarhub.packntrade.backend.dao.impl.BaseDAOImpl;
-import net.myanmarhub.packntrade.backend.domain.Account;
-import net.myanmarhub.packntrade.backend.gcm.GCMDevice;
-import net.myanmarhub.packntrade.backend.gcm.MessageData;
-import net.myanmarhub.packntrade.backend.gcm.dao.GCMDeviceImpl;
+import net.myanmarhub.collabra.backend.dao.DAOException;
+import net.myanmarhub.collabra.backend.dao.impl.BaseDAOImpl;
+import net.myanmarhub.collabra.backend.domain.GCMDevice;
+import net.myanmarhub.collabra.backend.domain.MessageData;
 
 import org.hibernate.Session;
 
@@ -24,42 +21,6 @@ import java.util.HashMap;
  */
 public class Utils {
     private static final String API_KEY = "AIzaSyA42uEYUE24OZzodLMysDfeTYK55LcKy3w";
-
-    public static Account authorizedUser(com.google.appengine.api.users.User authUser)
-            throws UnauthorizedException {
-        if (authUser == null) {
-            throw new UnauthorizedException(RS.ERROR_UNAUTHORIZED);
-        }
-        Session session = HibernateUtil.getSession();
-        try {
-            AccountDAOImpl accountDAOImpl = new AccountDAOImpl(session);
-            Account account = accountDAOImpl.getByEmail(authUser.getEmail());
-            if (account == null) {
-                throw new UnauthorizedException(RS.ERROR_UNAUTHORIZED);
-            }
-            return account;
-        } finally {
-            session.close();
-        }
-    }
-
-    public static Account authorizedAdmin(com.google.appengine.api.users.User authUser)
-            throws UnauthorizedException {
-        if (authUser == null) {
-            throw new UnauthorizedException(RS.ERROR_UNAUTHORIZED);
-        }
-        Session session = HibernateUtil.getSession();
-        try {
-            AccountDAOImpl accountDAOImpl = new AccountDAOImpl(session);
-            Account account = accountDAOImpl.getByEmail(authUser.getEmail());
-            if (account == null || account.getIsAdmin() == 1) {
-                throw new UnauthorizedException(RS.ERROR_UNAUTHORIZED);
-            }
-            return account;
-        } finally {
-            session.close();
-        }
-    }
 
     public static void GCMNotify(MessageData messageData) {
         Session session = HibernateUtil.getSession();
@@ -89,6 +50,7 @@ public class Utils {
     private static Result doSendViaGcm(MessageData messageData, GCMDevice deviceInfo, String key) {
         Session session = HibernateUtil.getSession();
         Result result = null;
+        BaseDAOImpl<GCMDevice> dao = new BaseDAOImpl<GCMDevice>(session, GCMDevice.class);
         try {
             HashMap<String, String> data = new HashMap<String, String>();
             data.put("message", messageData.getMessage());
@@ -105,12 +67,16 @@ public class Utils {
                 String canonicalRegId = result.getCanonicalRegistrationId();
                 if (canonicalRegId != null) {
                     deviceInfo.setDeviceRegistrationID(canonicalRegId);
-                    new GCMDeviceImpl(session).update(deviceInfo);
+                    try {
+                        dao.update(deviceInfo);
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 String error = result.getErrorCodeName();
                 if (error.equals(Constants.ERROR_NOT_REGISTERED)) {
-                    new GCMDeviceImpl(session).delete(deviceInfo.getDeviceRegistrationID());
+                    dao.delete(deviceInfo.getDeviceRegistrationID());
                 }
             }
         } catch (IOException e) {
