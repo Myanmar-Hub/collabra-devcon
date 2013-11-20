@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/DtJUsAihnhZrUKBU6-SKkEjVUdk\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/zfP6QMf3rttutHA7ntCHgb-07Yo\"",
  "discoveryVersion": "v1",
  "id": "collabra:v1",
  "name": "collabra",
@@ -97,6 +97,34 @@
     }
    }
   },
+  "GCMDevice": {
+   "id": "GCMDevice",
+   "type": "object",
+   "properties": {
+    "deviceInformation": {
+     "type": "string"
+    },
+    "deviceRegistrationID": {
+     "type": "string"
+    },
+    "timestamp": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "GCMDeviceCollection": {
+   "id": "GCMDeviceCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "GCMDevice"
+     }
+    }
+   }
+  },
   "JsonMap": {
    "id": "JsonMap",
    "type": "object"
@@ -158,6 +186,70 @@
      "scopes": [
       "https://www.googleapis.com/auth/userinfo.email"
      ]
+    }
+   }
+  },
+  "gcm": {
+   "resources": {
+    "device": {
+     "methods": {
+      "delete": {
+       "id": "collabra.gcm.device.delete",
+       "path": "device/{regId}",
+       "httpMethod": "DELETE",
+       "parameters": {
+        "regId": {
+         "type": "string",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "regId"
+       ],
+       "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email"
+       ]
+      },
+      "getAll": {
+       "id": "collabra.gcm.device.getAll",
+       "path": "device",
+       "httpMethod": "GET",
+       "parameters": {
+        "limit": {
+         "type": "integer",
+         "format": "int32",
+         "location": "query"
+        },
+        "offset": {
+         "type": "integer",
+         "format": "int32",
+         "location": "query"
+        }
+       },
+       "response": {
+        "$ref": "GCMDeviceCollection"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email"
+       ]
+      },
+      "insert": {
+       "id": "collabra.gcm.device.insert",
+       "path": "device",
+       "httpMethod": "POST",
+       "request": {
+        "$ref": "GCMDevice",
+        "parameterName": "resource"
+       },
+       "response": {
+        "$ref": "JsonMap"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email"
+       ]
+      }
+     }
     }
    }
   },

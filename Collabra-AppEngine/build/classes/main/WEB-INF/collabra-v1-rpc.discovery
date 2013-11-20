@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/DtJUsAihnhZrUKBU6-SKkEjVUdk\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/zfP6QMf3rttutHA7ntCHgb-07Yo\"",
  "discoveryVersion": "v1",
  "id": "collabra:v1",
  "name": "collabra",
@@ -95,6 +95,34 @@
     }
    }
   },
+  "GCMDevice": {
+   "id": "GCMDevice",
+   "type": "object",
+   "properties": {
+    "deviceInformation": {
+     "type": "string"
+    },
+    "deviceRegistrationID": {
+     "type": "string"
+    },
+    "timestamp": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "GCMDeviceCollection": {
+   "id": "GCMDeviceCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "GCMDevice"
+     }
+    }
+   }
+  },
   "JsonMap": {
    "id": "JsonMap",
    "type": "object"
@@ -143,6 +171,58 @@
    "parameters": {
     "resource": {
      "$ref": "Conversation"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "JsonMap"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.gcm.device.delete": {
+   "id": "collabra.gcm.device.delete",
+   "parameters": {
+    "regId": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "regId"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.gcm.device.getAll": {
+   "id": "collabra.gcm.device.getAll",
+   "allowGet": true,
+   "parameters": {
+    "limit": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "offset": {
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "returns": {
+    "$ref": "GCMDeviceCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "collabra.gcm.device.insert": {
+   "id": "collabra.gcm.device.insert",
+   "parameters": {
+    "resource": {
+     "$ref": "GCMDevice"
     }
    },
    "parameterOrder": [

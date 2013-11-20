@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    compile 'com.google.android.gms:play-services:3.2.65'
     compile project(':Collabra-endpoints')
     compile project(':Sherlock')
 }
