@@ -1,0 +1,10 @@
+17:55:17,051 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+17:55:17,276 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+17:55:17,550 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/tinhtooaung/Desktop/devcon/source/CollabraProject/Collabra-AppEngine/target/Collabra-AppEngine-1.0/WEB-INF/classes/net/myanmarhub/collabra/DeviceInfo.class" with enhanced definition
+17:55:17,557 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/tinhtooaung/Desktop/devcon/source/CollabraProject/Collabra-AppEngine/target/Collabra-AppEngine-1.0/WEB-INF/classes/net/myanmarhub/collabra/MessageData.class" with enhanced definition
+17:55:17,557 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 2 classes. Timings : input=226 ms, enhance=54 ms, total=280 ms. Consult the log for full details
+17:59:08,288 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+17:59:08,494 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+17:59:08,738 (main) INFO  [DataNucleus.Enhancer] - Class "net.myanmarhub.collabra.DeviceInfo" is already enhanced.
+17:59:08,740 (main) INFO  [DataNucleus.Enhancer] - Class "net.myanmarhub.collabra.MessageData" is already enhanced.
+17:59:08,740 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 2 classes. Timings : input=219 ms, enhance=26 ms, total=245 ms. Consult the log for full details

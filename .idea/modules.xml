@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Collabra/Collabra.iml" filepath="$PROJECT_DIR$/Collabra/Collabra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Collabra-AppEngine/Collabra-AppEngine.iml" filepath="$PROJECT_DIR$/Collabra-AppEngine/Collabra-AppEngine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Collabra-endpoints/Collabra-endpoints.iml" filepath="$PROJECT_DIR$/Collabra-endpoints/Collabra-endpoints.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CollabraProject.iml" filepath="$PROJECT_DIR$/CollabraProject.iml" />
+    </modules>
+  </component>
+</project>
+
