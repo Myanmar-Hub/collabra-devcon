@@ -1,13 +1,19 @@
 package net.myanmarhub.collabra.domain;
 
+import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Tin Htoo Aung (Myanmar Hub) on 20/11/13.
@@ -33,6 +39,13 @@ public class User {
      * Timestamp for last time user login
      */
     private Date lastLoginTime;
+
+    /**
+     * List of conversations that user made
+     */
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Conversation> conversations = new HashSet<Conversation>();
 
 
     /**
