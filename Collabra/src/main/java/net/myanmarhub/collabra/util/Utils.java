@@ -1,7 +1,6 @@
 package net.myanmarhub.collabra.util;
 
 import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,8 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -53,21 +50,6 @@ public class Utils {
     public static Collabra getAPIService() {
         return new Collabra.Builder(AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(), null).build();
-    }
-
-    public static Boolean isAccountExist(Context context, String accountName) {
-        Account account = new Account(accountName, Prefs.ACCOUNT_PROVIDER);
-        AccountManager am = AccountManager.get(context);
-        ArrayList<Account> accounts = new ArrayList<Account>
-                (Arrays.asList(am.getAccountsByType(Prefs.ACCOUNT_PROVIDER)));
-        return accounts.contains(account);
-    }
-
-    public static Boolean isAccountExist(Context context, Account account) {
-        AccountManager am = AccountManager.get(context);
-        ArrayList<Account> accounts = new ArrayList<Account>
-                (Arrays.asList(am.getAccountsByType(Prefs.ACCOUNT_PROVIDER)));
-        return accounts.contains(account);
     }
 
     public static Account getAccount(Context context) {

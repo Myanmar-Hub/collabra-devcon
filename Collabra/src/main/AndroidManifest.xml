@@ -82,7 +82,7 @@
             android:authorities="net.myanmarhub.collabra.provider"
             android:label="@string/app_name"
             android:syncable="true"
-            android:exported="false"/>
+            android:exported="true"/>
 
 
     </application>

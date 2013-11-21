@@ -2,7 +2,7 @@
 <sync-adapter
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:contentAuthority="net.myanmarhub.collabra.provider"
-    android:accountType="collabra.com.mm"
+    android:accountType="mm.com.collabra"
     android:userVisible="true"
     android:supportsUploading="false"
     android:allowParallelSyncs="true"

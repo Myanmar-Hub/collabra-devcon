@@ -95,8 +95,8 @@ public class UserResource {
             }
             HashMap<String, Long> result = new HashMap<String, Long>();
             result.put("id", user.getId());
-//            Utils.GCMNotify(new MessageData(String.valueOf(user.getId()),
-//                    GCMConstant.KIND_USER, GCMConstant.TYPE_INSERT));
+            Utils.GCMNotify(new MessageData(String.valueOf(user.getId()),
+                    GCMConstant.KIND_USER, GCMConstant.TYPE_INSERT));
             return result;
         } finally {
             session.close();

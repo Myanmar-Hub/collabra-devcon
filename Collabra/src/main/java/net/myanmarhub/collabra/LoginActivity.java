@@ -48,7 +48,7 @@ public class LoginActivity extends BaseFragmentActivity {
         init();
     }
 
-    private void init(){
+    private void init() {
         txtName = (EEditText) findViewById(R.id.login_txtName);
         lblMessage = (ETextView) findViewById(R.id.login_lblMessage);
         btnSignIn = (EButton) findViewById(R.id.login_btnSignIn);
@@ -114,7 +114,9 @@ public class LoginActivity extends BaseFragmentActivity {
                     btnSignIn.setEnabled(true);
                     showError(errMessage);
                     setProgressBarIndeterminateVisibility(false);
-                }else{
+                } else {
+                    Account account = Utils.getAccount(getBaseContext());
+                    ContentResolver.requestSync(account, Prefs.CONTENT_PROVIDER_AUTHORITY, new Bundle());
                     finish();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 }
@@ -133,11 +135,14 @@ public class LoginActivity extends BaseFragmentActivity {
 
     public Account createSyncAccount(String accountName) {
         Account newAccount = new Account(
-                accountName + "@" + Prefs.ACCOUNT_PROVIDER, Prefs.ACCOUNT_PROVIDER);
+                accountName + "@collabra.com.mm", Prefs.ACCOUNT_PROVIDER);
         AccountManager accountManager =
                 (AccountManager) getSystemService(
                         ACCOUNT_SERVICE);
         if (accountManager.addAccountExplicitly(newAccount, null, null)) {
+            Utils.getSettings(this).edit()
+                    .putString(Prefs.ACCOUNT_NAME, accountName + "@collabra.com.mm")
+                    .commit();
             ContentResolver.setSyncAutomatically(newAccount, Prefs.CONTENT_PROVIDER_AUTHORITY, true);
             ContentResolver.setIsSyncable(newAccount, Prefs.CONTENT_PROVIDER_AUTHORITY, 1);
         } else {

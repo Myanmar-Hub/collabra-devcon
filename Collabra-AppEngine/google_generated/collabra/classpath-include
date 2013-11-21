@@ -1,4 +1,4 @@
-	<classpathentry kind="lib" path="libs/google-api-services-collabra-v1-rev20131121044214-1.17.0-rc.jar" sourcepath="libs-sources/google-api-services-collabra-v1-rev20131121044214-1.17.0-rc-sources.jar"/>
+	<classpathentry kind="lib" path="libs/google-api-services-collabra-v1-rev20131121052941-1.17.0-rc.jar" sourcepath="libs-sources/google-api-services-collabra-v1-rev20131121052941-1.17.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="libs/google-api-client-1.17.0-rc.jar" sourcepath="libs-sources/google-api-client-1.17.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="libs/google-api-client-android-1.17.0-rc.jar" sourcepath="libs-sources/google-api-client-android-1.17.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="libs/google-api-client-appengine-1.17.0-rc.jar" sourcepath="libs-sources/google-api-client-appengine-1.17.0-rc-sources.jar"/>

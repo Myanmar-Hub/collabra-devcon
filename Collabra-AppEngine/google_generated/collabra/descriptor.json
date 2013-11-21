@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/collabra/v1/20131121044214/java/1.17.0-rc/myanhub_collabra_appspot_com-collabra-v1-20131121044214-java-1.17.0-rc-sources.jar", 
-      "path": "myanhub_collabra_appspot_com-collabra-v1-20131121044214-java-1.17.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/collabra/v1/20131121052941/java/1.17.0-rc/myanhub_collabra_appspot_com-collabra-v1-20131121052941-java-1.17.0-rc-sources.jar", 
+      "path": "myanhub_collabra_appspot_com-collabra-v1-20131121052941-java-1.17.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-11-21 04:42"
+      "timestamp": "2013-11-21 05:29"
     }, 
     {
-      "path": "myanhub_collabra_appspot_com-collabra-v1-20131121044214-java-1.17.0-rc.jar.properties", 
+      "path": "myanhub_collabra_appspot_com-collabra-v1-20131121052941-java-1.17.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -674,5 +674,5 @@
   "version": "v1", 
   "language_version": "1.17.0-rc", 
   "id": "collabra:v1", 
-  "revision": 20131121044214
+  "revision": 20131121052941
 }
