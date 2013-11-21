@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/zfP6QMf3rttutHA7ntCHgb-07Yo\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/MdTmSiSsx1n0F_8v8cv0vBtfxGc\"",
  "discoveryVersion": "v1",
  "id": "collabra:v1",
  "name": "collabra",
@@ -82,12 +82,6 @@
     "message": {
      "type": "string"
     },
-    "recipients": {
-     "type": "array",
-     "items": {
-      "$ref": "User"
-     }
-    },
     "sendAt": {
      "type": "string",
      "format": "date-time"
@@ -143,6 +137,18 @@
     },
     "username": {
      "type": "string"
+    }
+   }
+  },
+  "UserCollection": {
+   "id": "UserCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "User"
+     }
     }
    }
   }
@@ -270,6 +276,17 @@
      "parameterOrder": [
       "userId"
      ],
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "getAll": {
+     "id": "collabra.user.getAll",
+     "path": "user",
+     "httpMethod": "GET",
+     "response": {
+      "$ref": "UserCollection"
+     },
      "scopes": [
       "https://www.googleapis.com/auth/userinfo.email"
      ]

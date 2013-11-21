@@ -1,20 +1,14 @@
 package net.myanmarhub.collabra.backend.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * Tin Htoo Aung (Myanmar Hub) on 20/11/13.
@@ -34,13 +28,6 @@ public class Conversation {
      */
     @ManyToOne
     private User sender;
-
-    /**
-     * recipients of this Conversation
-     */
-    @OneToMany(fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
-    private Set<User> recipients = new HashSet<User>();
 
     /**
      * message
@@ -105,23 +92,6 @@ public class Conversation {
         this.sender = sender;
     }
 
-    /**
-     * Get recipients of this Conversation
-     *
-     * @return recipients of this Conversation
-     */
-    public Set<User> getRecipients() {
-        return recipients;
-    }
-
-    /**
-     * Set recipients of this Conversation
-     *
-     * @param recipients recipients of this Conversation
-     */
-    public void setRecipients(Set<User> recipients) {
-        this.recipients = recipients;
-    }
 
     /**
      * Get message
@@ -164,7 +134,6 @@ public class Conversation {
         return "Conversation{" +
                 "id=" + id +
                 ", sender=" + sender +
-                ", recipients=" + recipients +
                 ", message='" + message + '\'' +
                 ", sendAt=" + sendAt +
                 '}';

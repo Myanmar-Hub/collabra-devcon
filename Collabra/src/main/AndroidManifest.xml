@@ -41,6 +41,32 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/home"/>
+
+        <service
+            android:name="net.myanmarhub.collabra.provider.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator"/>
+        </service>
+
+        <service
+            android:name=".provider.SyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter"/>
+        </service>
+
+
         <receiver
             android:name=".provider.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -50,6 +76,13 @@
             </intent-filter>
         </receiver>
         <service android:name=".provider.GCMIntentService"/>
+
+        <provider
+            android:name=".provider.Provider"
+            android:authorities="net.myanmarhub.collabra.provider"
+            android:label="@string/app_name"
+            android:syncable="true"
+            android:exported="false"/>
 
 
     </application>

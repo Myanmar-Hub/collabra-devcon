@@ -4,4 +4,5 @@
     <string name="SignIn">Sign In</string>
     <string name="default_font">fonts/hub.ttf</string>
     <string name="copyright">Myanmar Hub © 2013 Apache v2 license</string>
+    <string name="home">Home</string>
 </resources>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background"
-            android:padding="10dp">
+            android:padding="10dp"
+            tools:context=".LoginActivity">
 
 
     <RelativeLayout
@@ -28,9 +30,9 @@
             android:background="@drawable/shape_bg_white"
             android:padding="8dp"
             android:id="@+id/linearLayout2"
-            android:layout_marginTop="25dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignParentLeft="true">
+            android:layout_below="@+id/login_lblMessage"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="8dp">
 
             <net.myanmarhub.collabra.widget.EEditText
                 android:layout_width="match_parent"
@@ -41,13 +43,15 @@
                 android:id="@+id/login_txtName"/>
 
             <net.myanmarhub.collabra.widget.EButton
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/SignIn"
                 android:textColor="@android:color/black"
                 android:background="@drawable/btn_white"
                 android:id="@+id/login_btnSignIn"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:onClick="btnRegister"/>
+
         </LinearLayout>
 
         <net.myanmarhub.collabra.widget.ETextView
@@ -55,11 +59,25 @@
             android:layout_height="wrap_content"
             android:text="@string/copyright"
             android:id="@+id/textView"
-            android:layout_marginTop="8dp"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:layout_alignParentLeft="true"
             android:layout_below="@+id/linearLayout2"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"/>
+
+        <net.myanmarhub.collabra.widget.ETextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:gravity="center"
+            android:text="Small Text"
+            android:id="@+id/login_lblMessage"
+            android:textColor="#FF0000"
+            android:background="@drawable/shape_bg_white"
+            android:visibility="gone"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"/>
     </RelativeLayout>
 </ScrollView>

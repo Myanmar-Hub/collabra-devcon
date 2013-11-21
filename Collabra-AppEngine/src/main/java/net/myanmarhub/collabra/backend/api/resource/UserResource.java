@@ -3,6 +3,7 @@ package net.myanmarhub.collabra.backend.api.resource;
 import com.google.api.server.spi.config.AnnotationBoolean;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
+import com.google.api.server.spi.response.BadRequestException;
 
 import net.myanmarhub.collabra.backend.api.Config;
 import net.myanmarhub.collabra.backend.dao.impl.UserDAOImpl;
@@ -10,11 +11,13 @@ import net.myanmarhub.collabra.backend.domain.MessageData;
 import net.myanmarhub.collabra.backend.domain.User;
 import net.myanmarhub.collabra.backend.util.GCMConstant;
 import net.myanmarhub.collabra.backend.util.HibernateUtil;
+import net.myanmarhub.collabra.backend.util.RS;
 import net.myanmarhub.collabra.backend.util.Utils;
 
 import org.hibernate.Session;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Named;
 
@@ -49,6 +52,20 @@ public class UserResource {
     }
 
     @ApiMethod(
+            name = "user.getAll",
+            path = "user",
+            httpMethod = ApiMethod.HttpMethod.GET
+    )
+    public List<User> getAll() {
+        Session session = HibernateUtil.getSession();
+        try {
+            return new UserDAOImpl(session).getAll(null, null);
+        } finally {
+            session.close();
+        }
+    }
+
+    @ApiMethod(
             name = "user.getByUsername",
             path = "user/with/{username}",
             httpMethod = ApiMethod.HttpMethod.GET
@@ -67,10 +84,15 @@ public class UserResource {
             path = "user",
             httpMethod = ApiMethod.HttpMethod.POST
     )
-    public HashMap<String, Long> insert(User user) {
+    public HashMap<String, Long> insert(User user) throws BadRequestException {
         Session session = HibernateUtil.getSession();
         try {
-            new UserDAOImpl(session).insert(user);
+            UserDAOImpl dao = new UserDAOImpl(session);
+            if (dao.getByUserName(user.getUsername()) == null) {
+                dao.insert(user);
+            } else {
+                throw new BadRequestException(RS.ERROR_USERNAME_EXIST);
+            }
             HashMap<String, Long> result = new HashMap<String, Long>();
             result.put("id", user.getId());
 //            Utils.GCMNotify(new MessageData(String.valueOf(user.getId()),

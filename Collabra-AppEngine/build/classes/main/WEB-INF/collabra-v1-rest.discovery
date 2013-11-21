@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/zfP6QMf3rttutHA7ntCHgb-07Yo\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/8Jt4r_lQ0UmYakJ_4I5MMIMXidU\"",
  "discoveryVersion": "v1",
  "id": "collabra:v1",
  "name": "collabra",
@@ -145,6 +145,18 @@
      "type": "string"
     }
    }
+  },
+  "UserCollection": {
+   "id": "UserCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "User"
+     }
+    }
+   }
   }
  },
  "resources": {
@@ -270,6 +282,17 @@
      "parameterOrder": [
       "userId"
      ],
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "getAll": {
+     "id": "collabra.user.getAll",
+     "path": "user",
+     "httpMethod": "GET",
+     "response": {
+      "$ref": "UserCollection"
+     },
      "scopes": [
       "https://www.googleapis.com/auth/userinfo.email"
      ]

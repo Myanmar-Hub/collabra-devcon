@@ -17,6 +17,9 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -197,5 +200,15 @@ public class Utils {
         return dir.delete();
     }
 
+    public static String parseErrMessage(Exception ex) {
+        try {
+            String errMessage = ex.getMessage();
+            JSONObject obj = new JSONObject(errMessage.substring(errMessage.indexOf('{')));
+            return obj.getString("message");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "Unkown Error Occurred.";
+    }
 
 }
