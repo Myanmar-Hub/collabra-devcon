@@ -6,6 +6,9 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
+import com.appspot.myanhub_collabra.collabra.model.Conversation;
+import com.appspot.myanhub_collabra.collabra.model.User;
+
 import net.myanmarhub.collabra.dao.ConversationDAO;
 import net.myanmarhub.collabra.dao.UserDAO;
 
@@ -93,12 +96,12 @@ public class Provider extends ContentProvider {
         switch (uriType) {
             case USER_DIR:
                 UserDAO userDAO = new UserDAO(getContext());
-                id = userDAO.save(userDAO.fromContentValues(contentValues));
+                id = userDAO.insert(userDAO.fromContentValues(contentValues));
                 returnUri = Uri.parse(CollabraKind.User.USER + "/" + id);
                 break;
             case CONVERSATION_DIR:
                 ConversationDAO conversationDAO = new ConversationDAO(getContext());
-                id = conversationDAO.save(conversationDAO.fromContentValues(contentValues));
+                id = conversationDAO.insert(conversationDAO.fromContentValues(contentValues));
                 returnUri = Uri.parse(CollabraKind.Conversation.CONVERSATION + "/" + id);
                 break;
             default:
@@ -111,15 +114,17 @@ public class Provider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
         int uriType = URI_MATCHER.match(uri);
-        Long row;
+        int row;
         switch (uriType) {
             case USER_ITEM:
                 UserDAO userDAO = new UserDAO(getContext());
-                row = userDAO.save(userDAO.fromContentValues(contentValues));
+                User user = userDAO.fromContentValues(contentValues);
+                row = userDAO.update(user, user.getId());
                 break;
             case CONVERSATION_ITEM:
                 ConversationDAO conversationDAO = new ConversationDAO(getContext());
-                row = conversationDAO.save(conversationDAO.fromContentValues(contentValues));
+                Conversation conversation = conversationDAO.fromContentValues(contentValues);
+                row = conversationDAO.update(conversation, conversation.getId());
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);

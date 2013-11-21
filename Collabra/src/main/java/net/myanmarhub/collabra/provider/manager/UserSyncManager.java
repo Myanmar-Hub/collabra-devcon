@@ -52,7 +52,29 @@ public class UserSyncManager extends BaseSyncManager<User> {
 
     @Override
     protected void processData(User user) {
-        mUserDAO.save(user);
+        if (mUserDAO.getById(user.getId()) == null) {
+            insert(user);
+        } else {
+            update(user);
+        }
+    }
+
+    private void insert(User object) {
+        try {
+            mProviderClient.insert(CollabraKind.User.CONTENT_URI,
+                    mUserDAO.toContentValues(object));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void update(User object) {
+        try {
+            mProviderClient.update(Uri.parse(CollabraKind.User.CONTENT_URI + "/" +
+                    object.getId()), mUserDAO.toContentValues(object), null, null);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

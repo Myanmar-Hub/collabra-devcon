@@ -1,10 +1,10 @@
 package net.myanmarhub.collabra;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.widget.ListView;
 
 import net.myanmarhub.collabra.adapter.ConversationAdapter;
@@ -33,7 +33,7 @@ public class HomeActivity extends BaseFragmentActivity implements LoaderManager.
     }
 
     private void populateData() {
-        getSupportLoaderManager().initLoader(0, null, this);
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override

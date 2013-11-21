@@ -18,6 +18,7 @@ import java.io.IOException;
 public class ConversationSyncManager extends BaseSyncManager<Conversation> {
 
     private ConversationDAO mConversationDAO;
+    private UserSyncManager userSyncManager;
     private static ConversationSyncManager INSTANCE;
 
     public static ConversationSyncManager getInstance(Context context, ContentProviderClient providerClient) {
@@ -30,11 +31,35 @@ public class ConversationSyncManager extends BaseSyncManager<Conversation> {
     public ConversationSyncManager(Context context, ContentProviderClient providerClient) {
         super(providerClient);
         mConversationDAO = new ConversationDAO(context);
+        userSyncManager = UserSyncManager.getInstance(context, providerClient);
     }
 
     @Override
     protected void processData(Conversation object) {
-        mConversationDAO.save(object);
+        if (mConversationDAO.getById(object.getId()) == null) {
+            insert(object);
+        } else {
+            update(object);
+        }
+        userSyncManager.processData(object.getSender());
+    }
+
+    private void insert(Conversation object) {
+        try {
+            mProviderClient.insert(CollabraKind.Conversation.CONTENT_URI,
+                    mConversationDAO.toContentValues(object));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void update(Conversation object) {
+        try {
+            mProviderClient.update(Uri.parse(CollabraKind.Conversation.CONTENT_URI + "/" +
+                    object.getId()), mConversationDAO.toContentValues(object), null, null);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

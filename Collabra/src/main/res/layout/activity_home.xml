@@ -6,14 +6,43 @@
                 android:layout_height="match_parent"
                 android:id="@+id/item_conversation_rlbackground"
                 android:background="@drawable/background"
-                android:padding="8dp">
+                android:padding="8dp"
+                tools:context=".HomeActivity">
 
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/home_list"
+        tools:listitem="@layout/item_conversation"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        tools:listitem="@layout/item_conversation"/>
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/linearLayout"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout"
+        android:background="@android:drawable/alert_light_frame"
+        android:layout_alignRight="@+id/home_list">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/editText"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:src="@android:drawable/ic_menu_send"
+            android:id="@+id/button"
+            android:layout_gravity="top"
+            android:onClick="btnSend"
+            android:layout_weight="5"/>
+    </LinearLayout>
+
 </RelativeLayout>

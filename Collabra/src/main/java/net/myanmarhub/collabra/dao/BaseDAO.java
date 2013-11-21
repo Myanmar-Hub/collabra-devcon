@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,27 +35,7 @@ public abstract class BaseDAO<T> {
         this.db.close();
     }
 
-    public Long save(T object) {
-        Long id = null;
-        try {
-            id = (Long) object.getClass().getDeclaredMethod("getId", new Class[]{})
-                    .invoke(object, null);
-            if (getById(id).getCount() == 0) {
-                return insert(object);
-            } else {
-                return Long.valueOf(update(object, id));
-            }
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private Long insert(T object) {
+    public Long insert(T object) {
         return db.insert(TABLE, null, toContentValues(object));
     }
 
@@ -68,7 +47,7 @@ public abstract class BaseDAO<T> {
         return db.query(TABLE, null, "_id = ?", new String[]{String.valueOf(id)}, null, null, null);
     }
 
-    private int update(T object, Long id) {
+    public int update(T object, Long id) {
         return db.update(TABLE, toContentValues(object), "_id = ?", new String[]{String.valueOf(id)});
     }
 
@@ -83,7 +62,7 @@ public abstract class BaseDAO<T> {
     public abstract T parse(Cursor cursor);
 
     public T toObject(Cursor cursor) {
-        if (!cursor.isAfterLast()) {
+        if (cursor.moveToFirst()) {
             return parse(cursor);
         }
         return null;
@@ -91,7 +70,7 @@ public abstract class BaseDAO<T> {
 
     public List toObjects(Cursor cursor) {
         List<T> result = new ArrayList<T>();
-        if (!cursor.isAfterLast()) {
+        if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 result.add(parse(cursor));
             }

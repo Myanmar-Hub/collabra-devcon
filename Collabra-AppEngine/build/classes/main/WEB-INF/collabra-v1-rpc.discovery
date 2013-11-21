@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/8Jt4r_lQ0UmYakJ_4I5MMIMXidU\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/MdTmSiSsx1n0F_8v8cv0vBtfxGc\"",
  "discoveryVersion": "v1",
  "id": "collabra:v1",
  "name": "collabra",
@@ -79,12 +79,6 @@
     },
     "message": {
      "type": "string"
-    },
-    "recipients": {
-     "type": "array",
-     "items": {
-      "$ref": "User"
-     }
     },
     "sendAt": {
      "type": "string",

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.appspot.myanhub_collabra.collabra.model.Conversation;
 import com.appspot.myanhub_collabra.collabra.model.User;
 
 import net.myanmarhub.collabra.R;
@@ -22,13 +21,11 @@ import net.myanmarhub.collabra.widget.ETextView;
  */
 public class ConversationAdapter extends CursorAdapter {
 
-    private ConversationDAO conversationDAO;
     private UserDAO userDAO;
     private Context mContext;
 
     public ConversationAdapter(Context context, Cursor c) {
         super(context, c, true);
-        this.conversationDAO = new ConversationDAO(context);
         this.userDAO = new UserDAO(context);
         this.mContext = context;
     }
@@ -50,8 +47,7 @@ public class ConversationAdapter extends CursorAdapter {
         ETextView lblTimestamp = (ETextView) view.getTag(R.id.item_conversation_lblTimestamp);
         RelativeLayout rlBackground = (RelativeLayout) view.getTag(R.id.item_conversation_rlbackground);
 
-        Conversation conversation = conversationDAO.toObject(cursor);
-        User sender = userDAO.toObject(userDAO.getById(conversation.getSender().getId()));
+        User sender = userDAO.toObject(userDAO.getById(cursor.getLong(cursor.getColumnIndex(ConversationDAO.FIELD_SENDER_ID))));
         if (sender.getUsername().equals(Utils.getSettings(mContext, "username"))) {
             lblName.setVisibility(View.GONE);
             rlBackground.setBackgroundResource(R.drawable.bubble_old_green_left);
@@ -60,7 +56,7 @@ public class ConversationAdapter extends CursorAdapter {
             rlBackground.setBackgroundResource(R.drawable.bubble_old_turquoise_right);
         }
 
-        lblMessage.setText(conversation.getMessage());
-        lblTimestamp.setText(conversation.getSendAt().toString());
+        lblMessage.setText(cursor.getString(cursor.getColumnIndex(ConversationDAO.FIELD_MESSAGE)));
+        lblTimestamp.setText(cursor.getString(cursor.getColumnIndex(ConversationDAO.FIELD_SEND_AT)));
     }
 }

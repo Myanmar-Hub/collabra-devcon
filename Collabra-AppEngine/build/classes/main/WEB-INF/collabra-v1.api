@@ -84,21 +84,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "collabra.gcm.device.insert" : {
-      "path" : "device",
-      "httpMethod" : "POST",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
-      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
-      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "collabra.gcm.device.delete" : {
       "path" : "device/{regId}",
       "httpMethod" : "DELETE",
@@ -117,6 +102,21 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "collabra.gcm.device.insert" : {
+      "path" : "device",
+      "httpMethod" : "POST",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
+      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
+      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     },
     "collabra.user.getAll" : {
@@ -153,21 +153,6 @@
         "body" : "empty"
       }
     },
-    "collabra.user.insert" : {
-      "path" : "user",
-      "httpMethod" : "POST",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
-      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
-      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.UserResource.insert",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "collabra.user.getByUsername" : {
       "path" : "user/with/{username}",
       "httpMethod" : "GET",
@@ -183,6 +168,21 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "collabra.user.insert" : {
+      "path" : "user",
+      "httpMethod" : "POST",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
+      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
+      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.UserResource.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -221,12 +221,6 @@
           },
           "sender" : {
             "$ref" : "User"
-          },
-          "recipients" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "User"
-            }
           },
           "message" : {
             "type" : "string"
@@ -318,6 +312,8 @@
           "$ref" : "GCMDeviceCollection"
         }
       },
+      "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.delete" : {
+      },
       "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert" : {
         "request" : {
           "$ref" : "GCMDevice"
@@ -326,8 +322,6 @@
           "$ref" : "JsonMap"
         }
       },
-      "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.delete" : {
-      },
       "net.myanmarhub.collabra.backend.api.resource.UserResource.getAll" : {
         "response" : {
           "$ref" : "UserCollection"
@@ -335,17 +329,17 @@
       },
       "net.myanmarhub.collabra.backend.api.resource.UserResource.delete" : {
       },
+      "net.myanmarhub.collabra.backend.api.resource.UserResource.getByUserName" : {
+        "response" : {
+          "$ref" : "User"
+        }
+      },
       "net.myanmarhub.collabra.backend.api.resource.UserResource.insert" : {
         "request" : {
           "$ref" : "User"
         },
         "response" : {
           "$ref" : "JsonMap"
-        }
-      },
-      "net.myanmarhub.collabra.backend.api.resource.UserResource.getByUserName" : {
-        "response" : {
-          "$ref" : "User"
         }
       },
       "net.myanmarhub.collabra.backend.api.resource.UserResource.getById" : {

@@ -70,6 +70,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    break;
             }
         }
     }
