@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
 
+import net.myanmarhub.collabra.provider.manager.ConversationSyncManager;
 import net.myanmarhub.collabra.provider.manager.UserSyncManager;
 import net.myanmarhub.collabra.util.GCMConstant;
 
@@ -46,6 +47,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             break;
                         case GCMConstant.TYPE_DELETE:
                             UserSyncManager.getInstance(getContext(), contentProviderClient).delete(message);
+                            break;
+                    }
+                    break;
+                case GCMConstant.KIND_CONVERSATION:
+                    switch (type) {
+                        case GCMConstant.TYPE_INSERT:
+                            try {
+                                ConversationSyncManager.getInstance(getContext(), contentProviderClient).fetchItem(message);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        case GCMConstant.TYPE_DELETE:
+                            ConversationSyncManager.getInstance(getContext(), contentProviderClient).delete(message);
                             break;
                     }
                     break;

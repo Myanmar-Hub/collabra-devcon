@@ -6,6 +6,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
+import net.myanmarhub.collabra.dao.ConversationDAO;
 import net.myanmarhub.collabra.dao.UserDAO;
 
 /**
@@ -41,7 +42,7 @@ public class Provider extends ContentProvider {
                         String sortOrder) {
         Cursor cursor;
         UserDAO userDAO;
-
+        ConversationDAO conversationDAO;
         switch (URI_MATCHER.match(uri)) {
             case USER_DIR:
                 userDAO = new UserDAO(getContext());
@@ -50,6 +51,14 @@ public class Provider extends ContentProvider {
             case USER_ITEM:
                 userDAO = new UserDAO(getContext());
                 cursor = userDAO.getById(Long.valueOf(uri.getLastPathSegment()));
+                break;
+            case CONVERSATION_DIR:
+                conversationDAO = new ConversationDAO(getContext());
+                cursor = conversationDAO.getAll(null, null);
+                break;
+            case CONVERSATION_ITEM:
+                conversationDAO = new ConversationDAO(getContext());
+                cursor = conversationDAO.getById(Long.valueOf(uri.getLastPathSegment()));
                 break;
             default:
                 throw new IllegalArgumentException("Unkown URI: " + uri);
@@ -79,14 +88,18 @@ public class Provider extends ContentProvider {
     public Uri insert(Uri uri, ContentValues contentValues) {
         int uriType = URI_MATCHER.match(uri);
         Long id;
-        UserDAO userDAO;
         Uri returnUri;
 
         switch (uriType) {
             case USER_DIR:
-                userDAO = new UserDAO(getContext());
+                UserDAO userDAO = new UserDAO(getContext());
                 id = userDAO.save(userDAO.fromContentValues(contentValues));
                 returnUri = Uri.parse(CollabraKind.User.USER + "/" + id);
+                break;
+            case CONVERSATION_DIR:
+                ConversationDAO conversationDAO = new ConversationDAO(getContext());
+                id = conversationDAO.save(conversationDAO.fromContentValues(contentValues));
+                returnUri = Uri.parse(CollabraKind.Conversation.CONVERSATION + "/" + id);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -99,11 +112,14 @@ public class Provider extends ContentProvider {
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
         int uriType = URI_MATCHER.match(uri);
         Long row;
-        UserDAO userDAO;
         switch (uriType) {
             case USER_ITEM:
-                userDAO = new UserDAO(getContext());
+                UserDAO userDAO = new UserDAO(getContext());
                 row = userDAO.save(userDAO.fromContentValues(contentValues));
+                break;
+            case CONVERSATION_ITEM:
+                ConversationDAO conversationDAO = new ConversationDAO(getContext());
+                row = conversationDAO.save(conversationDAO.fromContentValues(contentValues));
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -117,12 +133,19 @@ public class Provider extends ContentProvider {
         int uriType = URI_MATCHER.match(uri);
         Integer row;
         UserDAO userDAO = null;
+        ConversationDAO conversationDAO = null;
         switch (uriType) {
             case USER_ITEM:
                 row = userDAO.delete(Long.parseLong(uri.getLastPathSegment()));
                 break;
             case USER_DIR:
                 row = userDAO.deleteAll();
+                break;
+            case CONVERSATION_ITEM:
+                row = conversationDAO.delete(Long.parseLong(uri.getLastPathSegment()));
+                break;
+            case CONVERSATION_DIR:
+                row = conversationDAO.deleteAll();
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);

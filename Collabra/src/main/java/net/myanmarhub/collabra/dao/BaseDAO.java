@@ -83,7 +83,7 @@ public abstract class BaseDAO<T> {
     public abstract T parse(Cursor cursor);
 
     public T toObject(Cursor cursor) {
-        if (cursor.moveToFirst()) {
+        if (!cursor.isAfterLast()) {
             return parse(cursor);
         }
         return null;
@@ -91,7 +91,7 @@ public abstract class BaseDAO<T> {
 
     public List toObjects(Cursor cursor) {
         List<T> result = new ArrayList<T>();
-        if (cursor.moveToFirst()) {
+        if (!cursor.isAfterLast()) {
             while (!cursor.isAfterLast()) {
                 result.add(parse(cursor));
             }

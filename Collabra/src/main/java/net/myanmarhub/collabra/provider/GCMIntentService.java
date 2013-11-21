@@ -2,6 +2,7 @@ package net.myanmarhub.collabra.provider;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.app.NotificationCompat;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import net.myanmarhub.collabra.R;
+import net.myanmarhub.collabra.util.Prefs;
+import net.myanmarhub.collabra.util.Utils;
 
 /**
  * Tin Htoo Aung (Myanmar Hub) on 30/10/13.
@@ -48,9 +51,7 @@ public class GCMIntentService extends IntentService {
                 // If it's a regular GCM message, do some work.
             } else if (GoogleCloudMessaging.
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
-//                ContentResolver.requestSync(Utilsls.getAccount(getBaseContext()),
-//                        PacknTradeKind.AUTHORITY, extras);
-                sendNotification("" + messageType);
+                ContentResolver.requestSync(Utils.getAccount(getBaseContext()), Prefs.CONTENT_PROVIDER_AUTHORITY, extras);
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.

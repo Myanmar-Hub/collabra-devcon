@@ -16,7 +16,6 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -187,7 +186,7 @@ public class Utils {
             String errMessage = ex.getMessage();
             JSONObject obj = new JSONObject(errMessage.substring(errMessage.indexOf('{')));
             return obj.getString("message");
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "Unkown Error Occurred.";

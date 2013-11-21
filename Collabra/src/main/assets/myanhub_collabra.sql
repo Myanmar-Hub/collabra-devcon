@@ -6,7 +6,7 @@ CREATE  TABLE `User` (
 ###
 CREATE  TABLE `Conversation` (
   `_id` integer primary key,
-  `senderId` integer unique not null,
+  `senderId` integer not null,
   `message` integer not null,
   `sendAt` integer not null
   );

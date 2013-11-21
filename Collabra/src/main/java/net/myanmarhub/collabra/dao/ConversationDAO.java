@@ -19,7 +19,7 @@ public class ConversationDAO extends BaseDAO<Conversation> {
     public static final String FIELD_MESSAGE = "message";
     public static final String FIELD_SEND_AT = "sendAt";
 
-    protected ConversationDAO(Context context) {
+    public ConversationDAO(Context context) {
         super(context, TABLE);
     }
 
