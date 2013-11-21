@@ -33,26 +33,26 @@ public class Utils {
     private static SharedPreferences settingsPref;
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
-    public static String getSettings(Context context, String key){
-        if(settingsPref == null){
-            settingsPref = context.getSharedPreferences(Prefs.SETTINGS,  Context.MODE_PRIVATE);
+    public static String getSettings(Context context, String key) {
+        if (settingsPref == null) {
+            settingsPref = context.getSharedPreferences(Prefs.SETTINGS, Context.MODE_PRIVATE);
         }
         return settingsPref.getString(key, null);
     }
 
-    public static SharedPreferences getSettings(Context context){
-        if(settingsPref == null){
-            settingsPref = context.getSharedPreferences(Prefs.SETTINGS,  Context.MODE_PRIVATE);
+    public static SharedPreferences getSettings(Context context) {
+        if (settingsPref == null) {
+            settingsPref = context.getSharedPreferences(Prefs.SETTINGS, Context.MODE_PRIVATE);
         }
         return settingsPref;
     }
 
-    public static Collabra getAPIService(){
+    public static Collabra getAPIService() {
         return new Collabra.Builder(AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(), null).build();
     }
 
-    public static Boolean isAccountExist(Context context, String accountName){
+    public static Boolean isAccountExist(Context context, String accountName) {
         Account account = new Account(accountName, Prefs.ACCOUNT_PROVIDER);
         AccountManager am = AccountManager.get(context);
         ArrayList<Account> accounts = new ArrayList<Account>
@@ -60,18 +60,18 @@ public class Utils {
         return accounts.contains(account);
     }
 
-    public static Boolean isAccountExist(Context context, Account account){
+    public static Boolean isAccountExist(Context context, Account account) {
         AccountManager am = AccountManager.get(context);
         ArrayList<Account> accounts = new ArrayList<Account>
                 (Arrays.asList(am.getAccountsByType(Prefs.ACCOUNT_PROVIDER)));
         return accounts.contains(account);
     }
 
-    public static Account getAccount(Context context){
+    public static Account getAccount(Context context) {
         return new Account(getSettings(context, Prefs.ACCOUNT_NAME), Prefs.ACCOUNT_PROVIDER);
     }
 
-    public static Boolean checkPlayService(Activity activity){
+    public static Boolean checkPlayService(Activity activity) {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
@@ -86,13 +86,13 @@ public class Utils {
         return true;
     }
 
-    public static void registerGCM(final Context context){
+    public static void registerGCM(final Context context) {
         String regId;
-        final String SENDER_ID = "653266885491";
+        final String SENDER_ID = "699213652060";
 
         final GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(context);
         regId = getRegistrationId(context);
-        if(regId == null){
+        if (regId == null) {
             new AsyncTask<Void, Integer, String>() {
 
                 @Override
@@ -119,7 +119,7 @@ public class Utils {
                     }
                     device.setTimestamp(Calendar.getInstance().getTime().getTime());
 
-                    try{
+                    try {
                         collabra.gcm().device().insert(device).execute();
                         SharedPreferences pref = Utils.getSettings(context);
                         pref.edit()
@@ -134,12 +134,13 @@ public class Utils {
                 }
 
                 @Override
-                protected void onPostExecute(String o) {}
+                protected void onPostExecute(String o) {
+                }
             }.execute(null, null, null);
         }
     }
 
-    private static String getRegistrationId(Context context){
+    private static String getRegistrationId(Context context) {
         final SharedPreferences prefs = Utils.getSettings(context);
         String registrationId = prefs.getString(Prefs.GCM_REGISTRATION_ID, "");
         if (registrationId.length() == 0) {
@@ -159,7 +160,7 @@ public class Utils {
         return registrationId;
     }
 
-    private static int getAppVersion(Context context){
+    private static int getAppVersion(Context context) {
         try {
             return context.getPackageManager()
                     .getPackageInfo(context.getPackageName(), 0).versionCode;

@@ -2,6 +2,8 @@ package net.myanmarhub.collabra.backend.domain;
 
 import com.google.appengine.repackaged.org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -27,7 +29,8 @@ import javax.persistence.ManyToOne;
 public class MessageData {
 
     @Id
-    @GeneratedValue
+    @GenericGenerator(name = "hilo-gen", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-gen")
     private Long id;
 
     @Column(nullable = false)

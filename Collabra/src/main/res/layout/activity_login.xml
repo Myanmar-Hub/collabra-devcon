@@ -19,8 +19,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_launcher"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="110dp"/>
+            android:layout_centerHorizontal="true"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -54,7 +53,7 @@
         <net.myanmarhub.collabra.widget.ETextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MyanmarHub © 2013 Apache V2 license"
+            android:text="@string/copyright"
             android:id="@+id/textView"
             android:layout_marginTop="8dp"
             android:gravity="center"

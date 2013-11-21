@@ -84,21 +84,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "collabra.gcm.device.insert" : {
-      "path" : "device",
-      "httpMethod" : "POST",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
-      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
-      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "collabra.gcm.device.delete" : {
       "path" : "device/{regId}",
       "httpMethod" : "DELETE",
@@ -117,6 +102,21 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "collabra.gcm.device.insert" : {
+      "path" : "device",
+      "httpMethod" : "POST",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com" ],
+      "clientIds" : [ "699213652060-3pmo1b07noahu30l670esplhvct45k03.apps.googleusercontent.com", "699213652060-j1sr80drqta51r7sb1ieipd1j9ceqnsf.apps.googleusercontent.com", "com.google.api.server.spi.Constant.API_EXPLORER_CLIENT_ID" ],
+      "rosyMethod" : "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     },
     "collabra.user.delete" : {
@@ -292,6 +292,8 @@
           "$ref" : "GCMDeviceCollection"
         }
       },
+      "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.delete" : {
+      },
       "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.insert" : {
         "request" : {
           "$ref" : "GCMDevice"
@@ -299,8 +301,6 @@
         "response" : {
           "$ref" : "JsonMap"
         }
-      },
-      "net.myanmarhub.collabra.backend.api.resource.DeviceInfoResource.delete" : {
       },
       "net.myanmarhub.collabra.backend.api.resource.UserResource.delete" : {
       },

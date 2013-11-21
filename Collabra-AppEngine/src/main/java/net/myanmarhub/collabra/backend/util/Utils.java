@@ -20,7 +20,7 @@ import java.util.HashMap;
  * Tin Htoo Aung (Myanmar Hub) on 23/10/13.
  */
 public class Utils {
-    private static final String API_KEY = "AIzaSyAGM_HxZfOtr7arzPxv-KRXSuRX5Za8iww";
+    private static final String API_KEY = "AIzaSyCCiu76PYBzcO0FaO5P8FiiJf9oooIJx64";
 
     public static void GCMNotify(MessageData messageData) {
         Session session = HibernateUtil.getSession();
